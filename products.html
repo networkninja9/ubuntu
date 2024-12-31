@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Payments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .product-card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .payment-section {
+            padding: 20px;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-pay {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .btn-pay:hover {
+            background-color: #218838;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .frame {
+            min-height: 60vh;
+            padding: 0;
+        }
+        
+        .navbar {
+            color: black;
+        }
+        
+        
+        
+        .navbar-brand .brand-text {
+            font-size: 23px; 
+            font-family: 'Titillium Web', sans-serif; 
+        }
+        
+        .brand-color
+        {
+            color: red;
+        }
+        
+        .nav-con {
+            font-family: 'Titillium Web', sans-serif;
+        }
+        
+        .nav-con:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        
+        img {
+            width: 60vh;
+            height: 50vh;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        
+        .wel {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .row {
+            width: 100%;
+        }
+        
+        .card {
+            width: 100%;
+        }
+        
+        .full-width {
+            width: 100%;
+            height: auto;
+        }
+        
+        .frame .row {
+            margin: 0;
+        }
+        
+        .frame .card {
+            border: none;
+            height: 100%;
+        }
+        
+        
+        .frame .card-body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        ul.list-unstyled li a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .footer a {
+            text-decoration: none;
+        }
+        
+        .small-nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .footer {
+            background-color: rgb(239, 236, 236);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer .row {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .footer .col-md-4 {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+        
+        .footer .row.align-items-center {
+            align-items: center;
+        }
+        
+        .footer .list-inline {
+            padding-left: 0;
+            list-style: none;
+            margin-bottom: 0;
+        }
+        
+        .footer .list-inline-item {
+            margin-right: 1rem;
+        }
+        
+        .footer .list-inline-item a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .footer .list-inline-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .foot-link{
+            color: black;
+        }
+        
+        .card, .card-img-top, .card-body {
+                    border: none !important;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .frame .card-body {
+                text-align: center;
+            }
+        
+            .footer .container {
+                text-align: center;
+            }
+            
+            .frame {
+                min-height: 90vh;
+                padding: 0;
+            }
+        
+            .footer .row.align-items-center {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .footer .col-md-6 {
+                width: 100%;
+                justify-content: center !important;
+            }
+        
+            .footer .col-md-4 {
+                align-items: center !important;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .grand-nav {
+                display: none !important;
+            }
+        
+            .navbar-brand {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                text-align: center;
+            }
+        
+            .navbar-brand .brand-text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center py-4">
+        <div class="container-md">
+            <a class="navbar-brand" href="#">
+                <span class="brand-text"><span class="brand-color">Ubuntu</span> Dynamics</span>
+            </a>
+            
+            <ul class="navbar-nav ml-auto grand-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark nav-con" href="ubunco.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark nav-con" href="products.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark nav-con" href="#">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark nav-con" href="contactpage.html">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Our Products</h1>
+        <div class="row g-4">
+            <!-- Example Product Card -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Product 1" class="product-image w-100">
+                    <div class="p-3">
+                        <h5 class="card-title">Charcoal Bag</h5>
+                        <p class="card-text">High-quality charcoal, ideal for grilling and heating. Weight: 20kg.</p>
+                        <strong class="d-block mb-3">Price: $50</strong>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more product cards as needed -->
+             <!-- Example Product Card -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Product 1" class="product-image w-100">
+                    <div class="p-3">
+                        <h5 class="card-title">Charcoal Bag</h5>
+                        <p class="card-text">High-quality charcoal, ideal for grilling and heating. Weight: 20kg.</p>
+                        <strong class="d-block mb-3">Price: $50</strong>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Product Card -->
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Product 1" class="product-image w-100">
+                    <div class="p-3">
+                        <h5 class="card-title">Charcoal Bag</h5>
+                        <p class="card-text">High-quality charcoal, ideal for grilling and heating. Weight: 20kg.</p>
+                        <strong class="d-block mb-3">Price: $50</strong>
+                        <button class="btn btn-primary w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center mt-5 mb-4">Payments</h2>
+        <div class="payment-section mx-auto" style="max-width: 600px;">
+            <form>
+                <div class="mb-3">
+                    <label for="cardName" class="form-label">Cardholder Name</label>
+                    <input type="text" class="form-control" id="cardName" placeholder="Enter name on card">
+                </div>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="expiryDate" class="form-label">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="cvv" placeholder="123">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-pay w-100">Make Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer mt-auto pt-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>About Us</h5>
+                    <p>Ubuntu Dynamics Ltd is your trusted partner for exporting gold, charcoal, housing materials, and raw materials globally.</p>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="products">Home</a></li>
+                        <li><a href="container my-5">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="contactpage.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>Contact Information</h5>
+                    <p>
+                        <a href="mailto:Ubuntuexpo.africa@gmail.com" class="foot-link">Email us</a><br>
+                        <a href="tel:+2349018936842" class="foot-link">Call us</a><br>
+                        Address: 820-800 Burrard Street Vancouver Canada
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>Follow Us</h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>Newsletter</h5>
+                    <form>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 d-flex flex-column align-items-center">
+                    <h5>Important Links</h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row align-items-center text-center">
+                <div class="col-md-12">
+                    <p class="text-muted mb-0">© 2024 Ubuntu Dynamics Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
